@@ -10,7 +10,7 @@ var TEXT_WIDTH = 50;
 var BAR_HEIGHT = CLOUD_HEIGHT - GAP * 4.8;
 var barWidth = 40;
 
-var renderCloud = function (ctx, x ,y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
