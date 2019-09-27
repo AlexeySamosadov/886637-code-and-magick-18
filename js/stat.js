@@ -48,9 +48,9 @@ window.renderStatistics = function (ctx, players, times) {
     );
 
     ctx.fillText(
-      Math.round(times[i]),
-      CLOUD_X + GAP * 2 + (GAP * 2 + barWidth) * i,
-      CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 1.5
+        Math.round(times[i]),
+        CLOUD_X + GAP * 2 + (GAP * 2 + barWidth) * i,
+        CLOUD_HEIGHT - BAR_HEIGHT * times[i] / maxTime - GAP * 1.5
     );
 
     if (players[i] === 'Вы') {
