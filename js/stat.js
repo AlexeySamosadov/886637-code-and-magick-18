@@ -40,12 +40,11 @@ window.renderStatistics = function (ctx, players, times) {
   for (var i = 0; i < players.length; i++) {
     var cordinateX = CLOUD_X + GAP * 2 + (GAP * 2 + barWidth) * i;
     var diagramHeight = BAR_HEIGHT * times[i] / maxTime;
-    var currentPlayer = players[i];
 
     ctx.fillStyle = '#445578';
 
     ctx.fillText(
-        currentPlayer,
+        players[i],
         cordinateX,
         CLOUD_Y + GAP * 10
     );
@@ -56,7 +55,7 @@ window.renderStatistics = function (ctx, players, times) {
         CLOUD_HEIGHT - diagramHeight - GAP * 1.5
     );
 
-    currentPlayer = players[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240,' + Math.random() * 100 + '%, 50%)';
+    ctx.fillStyle = players[i] === 'Вы' ? 'rgba(255, 0, 0, 1)' : 'hsl(240,' + Math.random() * 100 + '%, 50%)';
 
     ctx.fillRect(
         CLOUD_X + TEXT_WIDTH + (GAP * 2 + barWidth) * i,
