@@ -25,8 +25,6 @@ var wizardCoat = setup.querySelector('.wizard-coat');
 var inputWizardCoat = wizardAppearanceInput[0];
 var setupFireball = setup.querySelector('.setup-fireball-wrap');
 var inputFireballColor = setupFireball.querySelector('input');
-var setupOpen = document.querySelector('.setup-open');
-var setupClose = document.querySelector('.setup-close');
 var userNameInput = document.querySelector('.setup-user-name');
 
 var init = function () {
@@ -77,42 +75,6 @@ var addWizardsToFragment = function () {
     fragment.appendChild(renderWizard(wizards[i]));
   }
 };
-
-var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_BUTTON_NUMBER && evt.target.nodeName !== 'INPUT') {
-    closePopup();
-  }
-};
-
-var openPopup = function () {
-  setup.classList.remove('hidden');
-  document.addEventListener('keydown', onPopupEscPress);
-};
-
-var closePopup = function () {
-  setup.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupEscPress);
-};
-
-setupOpen.addEventListener('click', function () {
-  openPopup();
-});
-
-setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_BUTTON_NUMBER) {
-    openPopup();
-  }
-});
-
-setupClose.addEventListener('click', function () {
-  closePopup();
-});
-
-setupClose.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_BUTTON_NUMBER) {
-    closePopup();
-  }
-});
 
 userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
