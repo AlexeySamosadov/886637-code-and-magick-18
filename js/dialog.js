@@ -14,9 +14,8 @@
   };
   var closePopup = function () {
     window.util.setup.classList.add('hidden');
-    window.util.setup.style.top = (window.util.setup.originalCords.y) + 'px';
-    window.util.setup.style.left = (window.util.setup.originalCords.x) + 'px';
-
+    window.util.setup.style.top = 80 + 'px';
+    window.util.setup.style.left = 950 + 'px';
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -43,8 +42,6 @@
       x: evt.clientX,
       y: evt.clientY
     };
-
-    var originalCords = startCoords;
 
     var dragged = false;
 
