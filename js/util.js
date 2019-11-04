@@ -2,20 +2,26 @@
 'use strict';
 
 (function () {
-  var ESC_BUTTON_NUMBER = 27;
-  var ENTER_BUTTON_NUMBER = 13;
+  var BUTTON_CODES = {
+    ESC: 27,
+    ENTER: 13
+  };
+
+  var isEscEvent = function (evt, action) {
+    if (evt.keyCode === BUTTON_CODES.ESC) {
+      action();
+    }
+  };
+
+  var isEnterEvent = function (evt, action) {
+    if (evt.keyCode === BUTTON_CODES.ENTER) {
+      action();
+    }
+  };
 
   window.util = {
-    isEscEvent: function (evt, action) {
-      if (evt.keyCode === ESC_BUTTON_NUMBER) {
-        action();
-      }
-    },
-    isEnterEvent: function (evt, action) {
-      if (evt.keyCode === ENTER_BUTTON_NUMBER) {
-        action();
-      }
-    },
+    isEscEvent: isEscEvent,
+    isEnterEvent: isEnterEvent,
     setup: document.querySelector('.setup')
   };
 })();

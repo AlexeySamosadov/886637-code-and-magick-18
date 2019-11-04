@@ -14,8 +14,7 @@
   };
   var closePopup = function () {
     window.util.setup.classList.add('hidden');
-    window.util.setup.style.top = 80 + 'px';
-    window.util.setup.style.left = 950 + 'px';
+    window.util.setup.style.remove(); // Почему то не работает, может я неправильно удаляю?
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
