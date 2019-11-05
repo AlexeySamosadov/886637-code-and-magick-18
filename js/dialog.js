@@ -14,7 +14,8 @@
   };
   var closePopup = function () {
     window.util.setup.classList.add('hidden');
-    window.util.setup.style.remove(); // Почему то не работает, может я неправильно удаляю?
+    // window.util.setup.style.remove();
+    window.util.setup.removeAttribute('style');
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
