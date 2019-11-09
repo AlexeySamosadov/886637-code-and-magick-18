@@ -33,8 +33,8 @@
     var wizardElement = sililarWizzardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
     return wizardElement;
   };
@@ -50,7 +50,27 @@
     setupSimilar.classList.remove('hidden'); // Показывает список визардов
   };
 
-  window.backend.load(addWizardsToWizardList);
+  var errorHandler = function (errorMessage) {
+    var div = document.createElement('div');
+    div.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    div.style.position = 'absolute';
+    div.style.left = 0;
+    div.style.rigth = 0;
+    div.style.fontSize = '30px';
+
+    div.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', div);
+  };
+
+  window.backend.load(addWizardsToWizardList, errorHandler);
+
+  var form = window.util.setup.querySelector('.setup-wizard-form');
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      window.util.setup.classList.add('hidden');
+    }, errorHandler);
+    evt.preventDefault();
+  });
 
   userNameInput.addEventListener('invalid', function () {
     if (userNameInput.validity.tooShort) {
@@ -79,6 +99,7 @@
     setupFireball.style.backgroundColor = fireballColor;
     inputFireballColor.value = fireballColor;
   });
+
 })();
 
 // var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
