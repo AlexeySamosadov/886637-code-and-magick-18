@@ -21,10 +21,6 @@
   var inputFireballColor = setupFireball.querySelector('input');
   var userNameInput = document.querySelector('.setup-user-name');
 
-  var init = function () {
-    addWizardsToWizardList();
-  };
-
   var randomNumber = function (maxNumber) {
     return Math.round(Math.random() * maxNumber);
   };
@@ -83,7 +79,6 @@
     setupFireball.style.backgroundColor = fireballColor;
     inputFireballColor.value = fireballColor;
   });
-  init();
 })();
 
 // var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
