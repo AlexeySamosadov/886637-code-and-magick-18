@@ -3,8 +3,8 @@
 
 (function () {
   var URL = {
-    GET: 'https://js.dump.academy/code-and-magick/data',
-    POST: 'https://js.dump.academy/code-and-magick'
+    Get: 'https://js.dump.academy/code-and-magick/data',
+    Post: 'https://js.dump.academy/code-and-magick'
   };
   var SERVER_CODE_OK = 200;
   var TIMEOUT = 10000;
@@ -33,11 +33,11 @@
   };
 
   var load = function (onSucces, onError) {
-    startXhr(URL.GET, 'GET', onSucces, onError);
+    startXhr(URL.Get, 'GET', onSucces, onError);
   };
 
   var save = function (data, onSucces, onError) {
-    startXhr(URL.POST, 'POST', onSucces, onError, data);
+    startXhr(URL.Post, 'POST', onSucces, onError, data);
   };
 
   window.backend = {
