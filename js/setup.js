@@ -101,25 +101,3 @@
   });
 
 })();
-
-// var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-// var SURENAMES = ['да Марья', 'Верон Себастьян', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-
-/* var generateName = function (name, surename) {
-    return name[randomNumber(8)] + ' ' + surename[randomNumber(8)];
-  };*/
-
-/* var generateWizards = function (length) {
-    var array = [];
-    for (var i = 0; i < length; i++) {
-      var wizard = {
-        name: generateName(NAMES, SURENAMES),
-        coatColor: generateColor(COAT_COLORS),
-        eyesColor: generateColor(EYES_COLORS)
-      };
-      array.push(wizard);
-    }
-    return array;
-  };*/
-
-// var wizards = generateWizards(QUANTITY_WIZARDS); // Сдесь получаем объект с магами - надо заменить на объект с сервера
