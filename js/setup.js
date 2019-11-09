@@ -7,16 +7,12 @@
     .content
     .querySelector('.setup-similar-item');
 
-  var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  var SURENAMES = ['да Марья', 'Верон Себастьян', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
   var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)]'];
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
   var QUANTITY_WIZARDS = 4;
-  var fragment = document.createDocumentFragment();
 
   var wizardAppearanceInput = window.util.setup.querySelectorAll('.setup-wizard-appearance input');
-
   var wizardEyes = window.util.setup.querySelector('.wizard-eyes');
   var inputWizardEyes = wizardAppearanceInput[1];
   var wizardCoat = window.util.setup.querySelector('.wizard-coat');
@@ -26,17 +22,11 @@
   var userNameInput = document.querySelector('.setup-user-name');
 
   var init = function () {
-    addWizardsToFragment();
-    setupSimilar.classList.remove('hidden');
-    similarListElement.appendChild(fragment);
+    addWizardsToWizardList();
   };
 
   var randomNumber = function (maxNumber) {
     return Math.round(Math.random() * maxNumber);
-  };
-
-  var generateName = function (name, surename) {
-    return name[randomNumber(8)] + ' ' + surename[randomNumber(8)];
   };
 
   var generateColor = function (color) {
@@ -53,26 +43,18 @@
     return wizardElement;
   };
 
-  var generateWizards = function (length) {
-    var array = [];
-    for (var i = 0; i < length; i++) {
-      var wizard = {
-        name: generateName(NAMES, SURENAMES),
-        coatColor: generateColor(COAT_COLORS),
-        eyesColor: generateColor(EYES_COLORS)
-      };
-      array.push(wizard);
-    }
+  var addWizardsToWizardList = function (wizards) {
+    var fragment = document.createDocumentFragment();
 
-    return array;
-  };
-
-  var addWizardsToFragment = function () {
-    var wizards = generateWizards(QUANTITY_WIZARDS);
-    for (var i = 0; i < wizards.length; i++) {
+    for (var i = 0; i < QUANTITY_WIZARDS; i++) {
       fragment.appendChild(renderWizard(wizards[i]));
     }
+
+    similarListElement.appendChild(fragment); // Добавляет фрагмент в лист магов
+    setupSimilar.classList.remove('hidden'); // Показывает список визардов
   };
+
+  window.backend.load(addWizardsToWizardList);
 
   userNameInput.addEventListener('invalid', function () {
     if (userNameInput.validity.tooShort) {
@@ -101,8 +83,27 @@
     setupFireball.style.backgroundColor = fireballColor;
     inputFireballColor.value = fireballColor;
   });
-
   init();
 })();
 
+// var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+// var SURENAMES = ['да Марья', 'Верон Себастьян', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 
+/* var generateName = function (name, surename) {
+    return name[randomNumber(8)] + ' ' + surename[randomNumber(8)];
+  };*/
+
+/* var generateWizards = function (length) {
+    var array = [];
+    for (var i = 0; i < length; i++) {
+      var wizard = {
+        name: generateName(NAMES, SURENAMES),
+        coatColor: generateColor(COAT_COLORS),
+        eyesColor: generateColor(EYES_COLORS)
+      };
+      array.push(wizard);
+    }
+    return array;
+  };*/
+
+// var wizards = generateWizards(QUANTITY_WIZARDS); // Сдесь получаем объект с магами - надо заменить на объект с сервера
