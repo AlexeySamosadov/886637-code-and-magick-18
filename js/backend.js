@@ -2,10 +2,11 @@
 'use strict';
 
 (function () {
-  var URL = {
-    Get: 'https://js.dump.academy/code-and-magick/data',
-    Post: 'https://js.dump.academy/code-and-magick'
+  var Url = {
+    GET: 'https://js.dump.academy/code-and-magick/data',
+    POST: 'https://js.dump.academy/code-and-magick'
   };
+
   var SERVER_CODE_OK = 200;
   var TIMEOUT = 10000;
   var startXhr = function (url, connectMetod, onSucces, onError, data) {
@@ -33,11 +34,11 @@
   };
 
   var load = function (onSucces, onError) {
-    startXhr(URL.Get, 'GET', onSucces, onError);
+    startXhr(Url.GET, 'GET', onSucces, onError);
   };
 
   var save = function (data, onSucces, onError) {
-    startXhr(URL.Post, 'POST', onSucces, onError, data);
+    startXhr(Url.POST, 'POST', onSucces, onError, data);
   };
 
   window.backend = {
