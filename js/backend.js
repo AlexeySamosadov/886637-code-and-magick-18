@@ -45,6 +45,17 @@
     xhr.send(data);
   };
 
+
+  // var newObj = [];
+  // window.newObj = newObj;
+  // var test = function (arr) {
+  //   window.newObj = arr;
+  //   return newObj;
+  // };
+  // load(test)
+  // console.log(window.newObj);
+
+
   window.backend = {
     load: load,
     save: save
