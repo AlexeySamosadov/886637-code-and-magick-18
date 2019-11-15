@@ -20,6 +20,7 @@
   };
 
   var addWizardsToWizardList = function (wizards) {
+    similarListElement.innerHTML = '';
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < QUANTITY_WIZARDS; i++) {

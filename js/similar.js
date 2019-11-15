@@ -9,15 +9,60 @@
     updateWizards();
   };
 
+  var getRang = function (wizard) {
+    var rank = 0;
+
+    if (wizard.colorCoat === coatColor) {
+      rank += 1;
+    }
+    if (wizard.colorEyes === eyesColor) {
+      rank += 1;
+    }
+    return rank;
+  };
+
+  var namesComparator = function (left, right) {
+    if (left > right) {
+      return 1;
+    } else if (left < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
 
   var updateWizards = function () {
-    var sameCoatWizards = wizards.filter(function (it) {
-      return it.coatColor === coatColor;
+    // var sameCoatEyesWizards = wizards.filter(function (it) {
+    //   return it.colorCoat === coatColor && it.colorEyes === eyesColor;
+    // });
+    //
+    // var sameCoatWizards = wizards.filter(function (it) {
+    //   return it.colorCoat === coatColor;
+    // });
+    // var sameEyesWizards = wizards.filter(function (it) {
+    //   return colorCoat === coatColor;
+    // });
+    //
+    // var filteredWizards = sameCoatEyesWizards
+    //   .concat(sameCoatWizards)
+    //   .concat(sameEyesWizards)
+    //   .concat(wizards);
+    //
+    // var uniqueWizzards =
+    //   filteredWizards.filter(function (it, i) {
+    //     return filteredWizards.indexOf(it) === i;
+    //   });
+    //
+    // window.render.wizzard(uniqueWizzards);
+
+    var sortedWizards = wizards.sort(function (left, right) {
+      var rangDifference = getRang(right) - getRang(left);
+      if (rangDifference === 0) {
+        rangDifference = namesComparator(left.name, right.name);
+      }
+      return rangDifference;
     });
-    var sameEyesWizards = wizards.filter(function (it) {
-      return it.eyesColor === eyesColor;
-    });
-    window.render.wizzard(sameCoatWizards.concat(sameEyesWizards));
+    window.render.wizzard(sortedWizards);
   };
 
   var errorHandler = function (errorMessage) {
@@ -57,16 +102,23 @@
     wizardEyes.style.fill = newColor;
     inputWizardEyes.value = newColor;
     eyesColor = newColor;
-    updateWizards();
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(updateWizards, 500);
   });
 
   var coatColor;
+  var lastTimeout;
   wizardCoat.addEventListener('click', function () {
     var newColor = generateColor(COAT_COLORS);
     wizardCoat.style.fill = newColor;
     inputWizardCoat.value = newColor;
     coatColor = newColor;
-    updateWizards();
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(updateWizards, 500);
   });
   setupFireball.addEventListener('click', function () {
     var fireballColor = generateColor(FIREBALL_COLORS);
