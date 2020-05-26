@@ -42,7 +42,6 @@ window.renderStatistics = function (ctx, players, times) {
     var diagramHeight = BAR_HEIGHT * times[i] / maxTime;
 
     ctx.fillStyle = '#445578';
-
     ctx.fillText(
         players[i],
         cordinateX,
