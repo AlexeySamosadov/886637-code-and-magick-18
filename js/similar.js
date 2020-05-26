@@ -32,29 +32,6 @@
   };
 
   var updateWizards = function () {
-    // var sameCoatEyesWizards = wizards.filter(function (it) {
-    //   return it.colorCoat === coatColor && it.colorEyes === eyesColor;
-    // });
-    //
-    // var sameCoatWizards = wizards.filter(function (it) {
-    //   return it.colorCoat === coatColor;
-    // });
-    // var sameEyesWizards = wizards.filter(function (it) {
-    //   return colorCoat === coatColor;
-    // });
-    //
-    // var filteredWizards = sameCoatEyesWizards
-    //   .concat(sameCoatWizards)
-    //   .concat(sameEyesWizards)
-    //   .concat(wizards);
-    //
-    // var uniqueWizzards =
-    //   filteredWizards.filter(function (it, i) {
-    //     return filteredWizards.indexOf(it) === i;
-    //   });
-    //
-    // window.render.wizzard(uniqueWizzards);
-
     var sortedWizards = wizards.sort(function (left, right) {
       var rangDifference = getRang(right) - getRang(left);
       if (rangDifference === 0) {

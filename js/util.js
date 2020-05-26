@@ -24,4 +24,5 @@
     isEnterEvent: isEnterEvent,
     setup: document.querySelector('.setup')
   };
+
 })();
